@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>REGISTER SONG</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container mt-4">
+        <form>
+            <div class="form-group text-center">
+                <audio controls="controls" id="songAudio">
+                    <source th:src="${songAudioLink}">
+                </audio>
+            </div>
+
+
+            <div class="form-group text-center">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-success" onclick="playSong()">PLAY</button>
+                    <button type="button" class="btn btn-danger" onclick="pauseSong()">PAUSE</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="START" id="inputStartTime">
+                        <input type="text" class="form-control" placeholder="FINISH" id="inputFinishTime">
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+            <div class="form-group text-center">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-warning" onclick="markStart()">MARK START</button>
+                    <button type="button" class="btn btn-info" onclick="markFinish()">MARK FINISH</button>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="author">Letter English:</label>
+                <input type="text" class="form-control" id="letterEnglish">
+            </div>
+            <div class="form-group">
+                <label for="author">Letter Spanish:</label>
+                <input type="text" class="form-control" id="letterSpanish">
+            </div>
+
+            <div class="row text-center">
+                <div class="col-12">
+                    <button type="button" class="btn btn-secondary btn-block" onclick="addRange()">ADD</button>
+                </div>
+            </div>
+        </form>
+
+        <ul class="list-group mt-2 mb-2" id="listLetters">
+            <li class="list-group-item active text-center">LIST LETTERS</li>
+            
+        </ul>
+        <div class="row text-center">
+            <div class="col-12">
+                <button type="button" class="btn btn-secondary btn-block" onclick="saveLetters()">SAVE</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script th:src="@{/js/letter/register-letter.js}"></script>
+</body>
+
+</html>
