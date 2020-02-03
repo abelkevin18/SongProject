@@ -14,7 +14,8 @@
 <body>
 
     <div class="container mt-4">
-        <form th:action="@{/song/register}" th:object="${song}" method="post">
+    	<nav th:replace="fragments/top-navbar :: top-navbar"></nav>
+        <form th:action="@{/song/register}" th:object="${song}" method="post" class="mt-2">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" th:field="*{name}">

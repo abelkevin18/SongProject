@@ -1,10 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LISTEN SONG</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <!-- Owner css -->
+    <link th:href="@{/css/song/listen-song.css}" rel="stylesheet" />
 </head>
+
 <body>
 
+    <div class="container fixed-top header">
+        <nav th:replace="fragments/top-navbar :: top-navbar"></nav>
+        <div class="form-group text-center">
+            <h3 th:text=${song.name}></h3>
+            <h4 th:text=${song.author}></h4>
+            <audio controls="controls" id="songAudio">
+                <source th:src="${song.urlDrive}">
+            </audio>
+        </div>
+    </div>
+
+    <div class="container mt-10  content">
+        <a style="text-align: left; color: blue" th:href="@{#}">> List of songs</a>
+
+        <div class="col-md-12 text-center">
+            <div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
+
+                <th:block th:each="letter : ${song.letters}">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne4">
+                            <h4 class="panel-title">
+                                <a>
+
+                                    <i class="icon fas fa-play" style="vertical-align: middle;"
+                                        th:onclick="'playLetter(' + ${letter.startTime} + ','+ ${letter.endTime} +')'"></i>
+                                    <p role="button" data-toggle="collapse" data-parent="#accordion4"
+                                        th:href="@{'#collapseOne' + ${letter.idLetter}}" aria-expanded="true"
+                                        th:text=${letter.letterEnglish}></p>
+                                </a>
+                            </h4>
+                        </div>
+                        <div th:id="'collapseOne' + ${letter.idLetter}" class="panel-collapse collapse in"
+                            role="tabpanel" aria-labelledby="headingOne4">
+                            <div class="panel-body">
+                                <p th:text=${letter.letterSpanish}></p>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+
+            </div>
+
+        </div>
+		<a style="text-align: left; color: blue" th:href="@{#}">> List of songs</a>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script th:src="@{/js/song/listen-song.js}"></script>
+
 </body>
+
 </html>

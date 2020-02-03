@@ -29,8 +29,8 @@ public class Letter implements Serializable{
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Song song;
 	
-	private String startTime;
-	private String endTime;
+	private int startTime;
+	private int endTime;
 	private String letterSpanish;
 	private String letterEnglish;
 	
