@@ -77,3 +77,17 @@ function createLi(ts, tf, en, es) {
     return li;
 
 }
+
+
+function backward() {
+	const backTime = songAudio.currentTime - 3;
+	songAudio.currentTime = backTime;
+	playSong();
+	
+}
+
+function forward() {
+	const advanceTime = songAudio.currentTime + 3;
+	songAudio.currentTime = advanceTime;
+	playSong();
+}

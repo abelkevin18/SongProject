@@ -9,6 +9,9 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">    
 </head>
 
 <body>
@@ -24,8 +27,10 @@
 
             <div class="form-group text-center">
                 <div class="btn-group" role="group" aria-label="Basic example">
+                	<button type="button" class="btn btn-secondary" onclick="backward()"><i class="fas fa-backward"></i></button>
                     <button type="button" class="btn btn-success" onclick="playSong()">PLAY</button>
                     <button type="button" class="btn btn-danger" onclick="pauseSong()">PAUSE</button>
+                    <button type="button" class="btn btn-secondary" onclick="forward()"><i class="fas fa-forward"></i></button>
                 </div>
             </div>
 
