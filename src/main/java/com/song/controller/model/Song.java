@@ -27,6 +27,7 @@ public class Song implements Serializable{
 	private String name;
 	private String author;
 	private String urlDrive;
+	private String hasLetter;
 	
 	@JsonIgnoreProperties(value={"song","hibernateLazyInitializer","handler"}, allowSetters=true)
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="song")

@@ -61,7 +61,7 @@ function saveLetters() {
     	let status = res.status;
     	console.log(status)
     	if(status === true) {
-    		location.href = '/';
+    		location.href = '/song/list';
     	}
     });
     

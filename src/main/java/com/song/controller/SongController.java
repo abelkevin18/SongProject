@@ -44,13 +44,14 @@ public class SongController {
 			
 			String urlComplete = "https://docs.google.com/uc?export=download&id="+song.getUrlDrive();
 			song.setUrlDrive(urlComplete);
+			song.setHasLetter("0");
 			songService.saveOrUpdate(song);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return "redirect:register";
+		return "redirect:list";
 	}
 	
 	@GetMapping("/listen/{id}")
