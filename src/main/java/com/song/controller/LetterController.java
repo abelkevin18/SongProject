@@ -36,9 +36,10 @@ public class LetterController {
 	public String registerLetterGet(@PathVariable(value = "id") Integer id, Map<String, Object> model) {
 		log.info("Letter controller: register letter GET");
 		Song song = songService.findById(id);
-		
+		log.info(song.getLetterEnglish());
 		
 		model.put("songAudioLink", song.getUrlDrive());
+		model.put("song", song);
 		return "letter/register-letter";
 	}
 	
