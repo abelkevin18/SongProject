@@ -1,5 +1,6 @@
 package com.song.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -43,22 +44,31 @@ public class SongController {
 			
 			String urlComplete = "https://docs.google.com/uc?export=download&id="+song.getUrlDrive();
 			song.setUrlDrive(urlComplete);
+			song.setHasLetter("0");
 			songService.saveOrUpdate(song);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return "redirect:register";
+		return "redirect:list";
 	}
 	
 	@GetMapping("/listen/{id}")
 	public String listenSongGet(@PathVariable(value = "id") Integer id, Map<String, Object> model) {
 		log.info("Song controller: listen song GET");
 		Song song = songService.findById(id);
-		//nos quedamos aqui
+
 		model.put("song", song);
-		return "song/register-song";
+		return "song/listen-song";
+	}
+	
+	@GetMapping("/list")
+	public String listSongGet(Map<String, Object> model) {
+		log.info("Song controller: list of songs GET");
+		List<Song> songs = songService.findAll();
+		model.put("songs", songs);
+		return "song/list-song";
 	}
 	
 

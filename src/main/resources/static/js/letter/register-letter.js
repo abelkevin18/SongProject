@@ -7,6 +7,9 @@ var letterSpanish = document.getElementById('letterSpanish');
 var listLetters = document.getElementById('listLetters');
 var dataLetters = [];
 
+let inputLettersEnglish = document.getElementById('inputLettersEnglish');
+let inputLettersSpanish = document.getElementById('inputLettersSpanish');
+
 function Letter(startTime, endTime, letterEnglish, letterSpanish) {
     this.startTime = startTime;
     this.endTime = endTime;
@@ -61,7 +64,7 @@ function saveLetters() {
     	let status = res.status;
     	console.log(status)
     	if(status === true) {
-    		location.href = '/';
+    		location.href = '/song/list';
     	}
     });
     
@@ -76,4 +79,27 @@ function createLi(ts, tf, en, es) {
                 </li>`;
     return li;
 
+}
+
+
+function backward() {
+	const backTime = songAudio.currentTime - 3;
+	songAudio.currentTime = backTime;
+	playSong();
+	
+}
+
+function forward() {
+	const advanceTime = songAudio.currentTime + 3;
+	songAudio.currentTime = advanceTime;
+	playSong();
+}
+
+function loadLetters() {
+	console.log(inputLettersEnglish.value);
+	console.log(inputLettersSpanish.value);
+	
+	
+	let theArray = inputLettersEnglish.value.split("\n"); 
+	console.log(theArray)
 }

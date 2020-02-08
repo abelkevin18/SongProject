@@ -36,9 +36,10 @@ public class LetterController {
 	public String registerLetterGet(@PathVariable(value = "id") Integer id, Map<String, Object> model) {
 		log.info("Letter controller: register letter GET");
 		Song song = songService.findById(id);
-		
+		log.info(song.getLetterEnglish());
 		
 		model.put("songAudioLink", song.getUrlDrive());
+		model.put("song", song);
 		return "letter/register-letter";
 	}
 	
@@ -46,13 +47,13 @@ public class LetterController {
 	public @ResponseBody Map<String, Object> registerLetterPost(@PathVariable(value = "id") Integer id, @RequestBody List<Letter> letters){
 		Map<String, Object> map = new HashMap<String, Object>();
 		Song song = songService.findById(id);
-		song.setLetters(letters);
 		
 		for(Letter letter : letters) {
 			letter.setSong(song);
 			letterService.saveOrUpdate(letter);
-		}
-		
+		}		
+		song.setHasLetter("1");
+		songService.saveOrUpdate(song);
 		map.put("status", true);
 		return map;
 	}

@@ -5,42 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>REGISTER SONG</title>
+    <title>REGISTER LETTER</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">    
 </head>
 
-<body>
+<body onload="loadLetters()">
 
     <div class="container mt-4">
-        <form>
+    	<nav th:replace="fragments/top-navbar :: top-navbar"></nav>
+        <form class="mt-2">
             <div class="form-group text-center">
                 <audio controls="controls" id="songAudio">
-                    <source th:src="${songAudioLink}">
+                    <source th:src="@{/Young turks -  Rod Stewart.mp3}">
                 </audio>
             </div>
-
+	
 
             <div class="form-group text-center">
                 <div class="btn-group" role="group" aria-label="Basic example">
+                	<button type="button" class="btn btn-secondary" onclick="backward()"><i class="fas fa-backward"></i></button>
                     <button type="button" class="btn btn-success" onclick="playSong()">PLAY</button>
                     <button type="button" class="btn btn-danger" onclick="pauseSong()">PAUSE</button>
+                    <button type="button" class="btn btn-secondary" onclick="forward()"><i class="fas fa-forward"></i></button>
                 </div>
             </div>
-
+            <!-- <button type="button" class="btn btn-secondary" 
+				th:data-parameter1="${song.letterEnglish}" 
+				th:data-parameter2="${song.letterSpanish}"
+				onclick="getLettersSong(this.getAttribute('data-parameter1'),this.getAttribute('data-parameter2'));">
+				probar
+			</button> -->
+			
             <div class="row">
                 <div class="col-12">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="START" id="inputStartTime">
-                        <input type="text" class="form-control" placeholder="FINISH" id="inputFinishTime">
+                        <input type="number" class="form-control" placeholder="START" id="inputStartTime" step="1">
+                        <input type="number" class="form-control" placeholder="FINISH" id="inputFinishTime" step="1">
                     </div>
                 </div>
 
 
             </div>
 
-
+			<input type="hidden" class="form-control" th:value="${song.letterEnglish}" id="inputLettersEnglish">
+			<input type="hidden" class="form-control" th:value="${song.letterSpanish}" id="inputLettersSpanish">
 
             <div class="form-group text-center">
                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -49,13 +62,19 @@
 
                 </div>
             </div>
-            <div class="form-group">
-                <label for="author">Letter English:</label>
-                <input type="text" class="form-control" id="letterEnglish">
-            </div>
-            <div class="form-group">
-                <label for="author">Letter Spanish:</label>
-                <input type="text" class="form-control" id="letterSpanish">
+            <div class="row">
+                <div class="col-12">
+	                 <div class="form-group">
+		                <label for="author">Letter English:</label>
+		                <input type="text" class="form-control" id="letterEnglish">
+		            </div>
+                </div>
+                <div class="col-12">
+	                <div class="form-group">
+		                <label for="author">Letter Spanish:</label>
+		                <input type="text" class="form-control" id="letterSpanish">
+		            </div>
+                </div>
             </div>
 
             <div class="row text-center">
