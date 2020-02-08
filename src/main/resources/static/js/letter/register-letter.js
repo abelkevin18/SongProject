@@ -7,8 +7,13 @@ var letterSpanish = document.getElementById('letterSpanish');
 var listLetters = document.getElementById('listLetters');
 var dataLetters = [];
 
-let inputLettersEnglish = document.getElementById('inputLettersEnglish');
-let inputLettersSpanish = document.getElementById('inputLettersSpanish');
+var inputLettersEnglish = document.getElementById('inputLettersEnglish');
+var inputLettersSpanish = document.getElementById('inputLettersSpanish');
+var countAdditionalLetters = 0;
+
+var arrayLettersEnglish = [];
+var arrayLettersSpanish = [];
+var btnAdd = document.getElementById('btnAdd');
 
 function Letter(startTime, endTime, letterEnglish, letterSpanish) {
     this.startTime = startTime;
@@ -36,6 +41,8 @@ function markFinish() {
 }
 
 function addRange() {
+	
+	console.log("count: "+ countAdditionalLetters);
     let li = createLi(inputStartTime.value, inputFinishTime.value, letterEnglish.value, letterSpanish.value);
     dataLetters.push(new Letter(inputStartTime.value, inputFinishTime.value, letterEnglish.value, letterSpanish.value));
     $("#listLetters").append(li);
@@ -43,6 +50,18 @@ function addRange() {
     inputFinishTime.value = '';
     letterEnglish.value = '';
     letterSpanish.value = '';
+    
+    countAdditionalLetters++;
+    if(countAdditionalLetters === arrayLettersEnglish.length) {
+    	console.log("Ya no hay más letras")
+    	document.getElementById("btnAdd").disabled = true;
+    	return false;
+    }
+    letterEnglish.value = arrayLettersEnglish[countAdditionalLetters];
+	letterSpanish.value = arrayLettersSpanish[countAdditionalLetters];
+	
+	
+    
 }
 
 function saveLetters() {
@@ -82,15 +101,15 @@ function createLi(ts, tf, en, es) {
 }
 
 
-function backward() {
-	const backTime = songAudio.currentTime - 3;
+function backward(second) {
+	const backTime = songAudio.currentTime - second;
 	songAudio.currentTime = backTime;
 	playSong();
 	
 }
 
-function forward() {
-	const advanceTime = songAudio.currentTime + 3;
+function forward(second) {
+	const advanceTime = songAudio.currentTime + second;
 	songAudio.currentTime = advanceTime;
 	playSong();
 }
@@ -100,6 +119,12 @@ function loadLetters() {
 	console.log(inputLettersSpanish.value);
 	
 	
-	let theArray = inputLettersEnglish.value.split("\n"); 
-	console.log(theArray)
+	arrayLettersEnglish = inputLettersEnglish.value.split("\n"); 
+	arrayLettersSpanish = inputLettersSpanish.value.split("\n"); 
+	
+	letterEnglish.value = arrayLettersEnglish[0];
+	letterSpanish.value = arrayLettersSpanish[0];
+
 }
+
+
