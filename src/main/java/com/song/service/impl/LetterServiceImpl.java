@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.song.controller.model.Letter;
+import com.song.model.Letter;
 import com.song.repository.LetterRepository;
 import com.song.service.ILetterService;
 

@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.song.controller.model.Letter;
-import com.song.controller.model.Song;
+import com.song.model.Letter;
+import com.song.model.Song;
 import com.song.service.ILetterService;
 import com.song.service.ISongService;
 

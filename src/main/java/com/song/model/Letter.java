@@ -1,4 +1,4 @@
-package com.song.controller.model;
+package com.song.model;
 
 import java.io.Serializable;
 

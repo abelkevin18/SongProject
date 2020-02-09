@@ -1,8 +1,9 @@
-package com.song.controller.model;
+package com.song.model;
 
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,9 @@ public class Song implements Serializable{
 	private String author;
 	private String urlDrive;
 	private String hasLetter;
+	@Column(columnDefinition="TEXT")
 	private String letterEnglish;
+	@Column(columnDefinition="TEXT")
 	private String letterSpanish;
 	
 	@JsonIgnoreProperties(value={"song","hibernateLazyInitializer","handler"}, allowSetters=true)

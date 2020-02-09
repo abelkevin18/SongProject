@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.song.controller.model.Song;
+import com.song.model.Song;
 import com.song.service.ISongService;
 
 import lombok.extern.slf4j.Slf4j;

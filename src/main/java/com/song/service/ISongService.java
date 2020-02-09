@@ -2,7 +2,7 @@ package com.song.service;
 
 import java.util.List;
 
-import com.song.controller.model.Song;
+import com.song.model.Song;
 
 public interface ISongService {
 	Song saveOrUpdate(Song song);

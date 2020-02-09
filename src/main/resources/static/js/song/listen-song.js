@@ -4,7 +4,7 @@ function playLetter(ts, tf) {
 	songAudio.currentTime = ts;
 	playSong();
 	
-	const intervalDuration = parseInt(tf) - parseInt(ts);
+	const intervalDuration = 1 + parseInt(tf) - parseInt(ts);
 
 	setTimeout(function(){
 		songAudio.pause();
@@ -18,4 +18,3 @@ function playSong() {
 function pauseSong() {
     songAudio.pause();
 }
-

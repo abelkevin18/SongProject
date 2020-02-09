@@ -2,7 +2,7 @@ package com.song.service;
 
 import java.util.List;
 
-import com.song.controller.model.Letter;
+import com.song.model.Letter;
 
 public interface ILetterService {
 	Letter saveOrUpdate(Letter letter);
