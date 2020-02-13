@@ -38,24 +38,24 @@
 
         <div class="col-md-12 text-center">
             <div th:if="${primaryLanguage == 'es'}" class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
-                <th:block th:each="letter : ${song.letters}">
+                <th:block th:each="letter,iter : ${song.letters}">
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingOne4">
                             <h4 class="panel-title">
                                 <a>
 
-                                    <i class="icon fas fa-play" style="vertical-align: middle;"
-                                        th:onclick="'playLetter(' + ${letter.startTime} + ','+ ${letter.endTime} +')'"></i>
+                                    <i th:id="${'iconPlay_'+iter.index}" class="icon fas fa-play" style="vertical-align: middle;"
+                                        th:onclick="'playLetter(' + ${letter.startTime} + ','+ ${letter.endTime} +','+${iter.index}+')'"></i>
                                     <p role="button" data-toggle="collapse" data-parent="#accordion4"
                                         th:href="@{'#collapseOne' + ${letter.idLetter}}" aria-expanded="true"
-                                        th:text=${letter.letterEnglish}></p>
+                                        th:text=${letter.letterSpanish}></p>
                                 </a>
                             </h4>
                         </div>
                         <div th:id="'collapseOne' + ${letter.idLetter}" class="panel-collapse collapse in"
                             role="tabpanel" aria-labelledby="headingOne4">
                             <div class="panel-body">
-                                <p th:text=${letter.letterSpanish}></p>
+                                <p th:text=${letter.letterEnglish}></p>
                             </div>
                         </div>
                     </div>
@@ -69,18 +69,18 @@
                             <h4 class="panel-title">
                                 <a>
 
-                                    <i class="icon fas fa-play" style="vertical-align: middle;"
-                                        th:onclick="'playLetter(' + ${letter.startTime} + ','+ ${letter.endTime} +')'"></i>
+                                    <i th:id="${'iconPlay_'+iter.index}" class="icon fas fa-play" style="vertical-align: middle;"
+                                        th:onclick="'playLetter(' + ${letter.startTime} + ','+ ${letter.endTime} +','+${iter.index}+')'"></i>
                                     <p role="button" data-toggle="collapse" data-parent="#accordion4"
                                         th:href="@{'#collapseOne' + ${letter.idLetter}}" aria-expanded="true"
-                                        th:text=${letter.letterSpanish}></p>
+                                        th:text=${letter.letterEnglish}></p>
                                 </a>
                             </h4>
                         </div>
                         <div th:id="'collapseOne' + ${letter.idLetter}" class="panel-collapse collapse in"
                             role="tabpanel" aria-labelledby="headingOne4">
                             <div class="panel-body">
-                                <p th:text=${letter.letterEnglish}></p>
+                                <p th:text=${letter.letterSpanish}></p>
                             </div>
                         </div>
                     </div>
