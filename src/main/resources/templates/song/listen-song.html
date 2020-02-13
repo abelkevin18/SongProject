@@ -63,7 +63,7 @@
 
             </div>
             <div th:if="${primaryLanguage == 'en'}" class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
-                <th:block th:each="letter : ${song.letters}">
+                <th:block th:each="letter,iter : ${song.letters}">
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingOne4">
                             <h4 class="panel-title">
