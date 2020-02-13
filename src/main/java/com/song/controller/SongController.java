@@ -54,12 +54,15 @@ public class SongController {
 		return "redirect:list";
 	}
 	
-	@GetMapping("/listen/{id}")
-	public String listenSongGet(@PathVariable(value = "id") Integer id, Map<String, Object> model) {
+	@GetMapping("/listen/{id}/{language}")
+	public String listenSongGet(@PathVariable(value = "id") Integer id,@PathVariable(value = "language") String language, Map<String, Object> model) {
 		log.info("Song controller: listen song GET");
 		Song song = songService.findById(id);
 
+		log.info(language);
 		model.put("song", song);
+		model.put("primaryLanguage", language);
+
 		return "song/listen-song";
 	}
 	

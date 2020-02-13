@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>REGISTER LETTER</title>
+    
+    <link th:href="@{/img/favicon.png}" rel="icon" type="image/png">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -21,8 +23,8 @@
         <form class="mt-2">
             <div class="form-group text-center">
                 <audio controls="controls" id="songAudio">
-                    <!-- <source th:src="@{/Young turks -  Rod Stewart.mp3}"> -->
-                    <source th:src="${songAudioLink}">
+                    <!-- --> <source th:src="@{/Young turks -  Rod Stewart.mp3}">
+                    <!-- <source th:src="${songAudioLink}"> -->
                 </audio>
             </div>
 			
@@ -60,7 +62,7 @@
 
             <div class="form-group text-center">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-warning" onclick="markStart()">TART</button>
+                    <button type="button" class="btn btn-warning" onclick="markStart()">START</button>
                     <button type="button" class="btn btn-info" onclick="markFinish()">FINISH</button>
                     <button type="button" class="btn btn-secondary" onclick="tryFragment()">TRY</button>
 

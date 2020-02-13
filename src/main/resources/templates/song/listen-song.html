@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LISTEN SONG</title>
 
+    <link th:href="@{/img/favicon.png}" rel="icon" type="image/png">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,7 +27,8 @@
             <h3 th:text=${song.name}></h3>
             <h4 th:text=${song.author}></h4>
             <audio controls="controls" id="songAudio">
-                <source th:src="${song.urlDrive}">
+                <!-- <source th:src="${song.urlDrive}">-->
+                <source th:src="@{/Young turks -  Rod Stewart.mp3}">
             </audio>
         </div>
     </div>
@@ -34,8 +37,7 @@
         <a style="text-align: left; color: blue" th:href="@{/song/list}">> List of songs</a>
 
         <div class="col-md-12 text-center">
-            <div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
-
+            <div th:if="${primaryLanguage == 'es'}" class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
                 <th:block th:each="letter : ${song.letters}">
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingOne4">
@@ -60,9 +62,34 @@
                 </th:block>
 
             </div>
+            <div th:if="${primaryLanguage == 'en'}" class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
+                <th:block th:each="letter : ${song.letters}">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne4">
+                            <h4 class="panel-title">
+                                <a>
+
+                                    <i class="icon fas fa-play" style="vertical-align: middle;"
+                                        th:onclick="'playLetter(' + ${letter.startTime} + ','+ ${letter.endTime} +')'"></i>
+                                    <p role="button" data-toggle="collapse" data-parent="#accordion4"
+                                        th:href="@{'#collapseOne' + ${letter.idLetter}}" aria-expanded="true"
+                                        th:text=${letter.letterSpanish}></p>
+                                </a>
+                            </h4>
+                        </div>
+                        <div th:id="'collapseOne' + ${letter.idLetter}" class="panel-collapse collapse in"
+                            role="tabpanel" aria-labelledby="headingOne4">
+                            <div class="panel-body">
+                                <p th:text=${letter.letterEnglish}></p>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+
+            </div>
 
         </div>
-		<a style="text-align: left; color: blue" th:href="@{/song/list}">> List of songs</a>
+        <a style="text-align: left; color: blue" th:href="@{/song/list}">> List of songs</a>
 
     </div>
 
