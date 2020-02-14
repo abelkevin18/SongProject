@@ -3,6 +3,7 @@ package com.song.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,6 +36,6 @@ public class Song implements Serializable{
 	private String letterSpanish;
 	
 	@JsonIgnoreProperties(value={"song","hibernateLazyInitializer","handler"}, allowSetters=true)
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="song")
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="song", cascade = CascadeType.ALL)
 	List<Letter> letters;
 }
